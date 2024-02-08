@@ -14,6 +14,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      "./plugins/my-plugin.js"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -21,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ekarni.expoplugintest"
     },
     "web": {
       "favicon": "./assets/favicon.png"
