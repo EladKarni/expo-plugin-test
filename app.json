@@ -15,7 +15,7 @@
       "**/*"
     ],
     "plugins": [
-      ["./plugins/my-plugin.js", { "lang": ["en", "es"] }]
+      ["./plugins/my-plugin.js", { "lang": ["en", "es", "cs"] }]
     ],
     "ios": {
       "supportsTablet": true
