@@ -1,9 +1,21 @@
 const {
   AndroidConfig,
   withAndroidManifest,
+  withXcodeProject,
   XML,
 } = require("expo/config-plugins");
 const { mkdirSync } = require("fs");
+
+function withIosLocalizableProject(config, { locales }) {
+  return withXcodeProject(config, async (config) => {
+    const xcodeProject = config.modResults;
+    locales.forEach((locale) => {
+      xcodeProject.addKnownRegion(locale);
+    });
+
+    return config;
+  });
+};
 
 function addAttributesToApplication(androidManifest, attributes) {
   const app = AndroidConfig.Manifest.getMainApplicationOrThrow(androidManifest);
@@ -38,14 +50,15 @@ async function writeXMLFiles(langs) {
 }
 
 const withRNLocalizeSettings = (expoConfig, languages) => {
-  console.log(languages);
-  return withAndroidManifest(expoConfig, (config) => {
+  let confing = withAndroidManifest(expoConfig, (config) => {
     config.modResults = addAttributesToApplication(config.modResults, {
       "android:localeConfig": "@xml/locales_config",
     });
     writeXMLFiles(languages);
     return config;
   });
+  confing = withIosLocalizableProject(expoConfig, languages)
+  return confing
 };
 
 module.exports = withRNLocalizeSettings;
