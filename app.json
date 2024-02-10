@@ -11,12 +11,8 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "plugins": [
-      ["./plugins/my-plugin.js", { "lang": ["en", "es", "cs"] }]
-    ],
+    "assetBundlePatterns": ["**/*"],
+    "plugins": [["./plugins/my-plugin.js", { "lang": ["en", "es"] }]],
     "ios": {
       "supportsTablet": true
     },
