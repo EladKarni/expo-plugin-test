@@ -6,10 +6,13 @@ const {
 } = require("expo/config-plugins");
 const { mkdirSync } = require("fs");
 
-function withIosLocalizableProject(config, { locales }) {
+function withIosLocalizableProject(config, { lang }) {
+  langs = ['en', 'es']
+  console.log(langs);
   return withXcodeProject(config, async (config) => {
     const xcodeProject = config.modResults;
-    locales.forEach((locale) => {
+    langs.forEach((locale) => {
+      console.log(locale);
       xcodeProject.addKnownRegion(locale);
     });
 
